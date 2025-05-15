@@ -1,0 +1,343 @@
+body {
+    background: linear-gradient(135deg, #1f80ee, #a5a4ce);
+    /* elegant & modern */
+    font-family: 'Roboto', sans-serif;
+    color: #f4f4f4;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(0, 0, 0, 0.863), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.detail-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    gap: 3rem;
+    z-index: 1;
+}
+
+.detail-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.detail-content {
+    max-width: 500px;
+    color: #ffffff;
+    z-index: 1;
+}
+
+.detail-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    z-index: 1;
+}
+
+.detail-content p {
+    margin-bottom: 0.7rem;
+    font-size: 1.1rem;
+    z-index: 1;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    color: #ffffff;
+    z-index: 1;
+}
+
+.detail-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 1;
+}
+
+.btn-details,
+.btn-to-car {
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    z-index: 1;
+}
+
+.btn-details {
+    background-color: #333;
+    color: #fff;
+}
+
+.btn-details:hover {
+    background-color: #e93509;
+    color: #000;
+}
+
+.btn-to-car {
+    background-color: #9fec22;
+    color: #000;
+    z-index: 1;
+}
+
+.btn-to-car:hover {
+    background-color: #ffffff;
+    color: #000;
+    z-index: 1;
+}
+
+/* Highlight-Bereich */
+.highlight-section {
+    background-color: transparent;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 2rem;
+    z-index: 1;
+}
+
+.highlight-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    z-index: 1;
+}
+
+
+.intro {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: auto;
+    z-index: 1;
+}
+
+/* Fun-Bereich */
+.fun-section {
+    background-color: transparent;
+    /* tiefes Blau zu edlem Lila */
+    color: #fff;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.fun-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+
+
+.fun-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.fun-icons-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.icon-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 200px;
+    z-index: 1;
+}
+
+.icon-block img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 30%;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-block p {
+    font-size: 1rem;
+    margin: 0;
+    color: #fff;
+}
+
+
+/* Galerie */
+.gallery-section {
+    padding: 2rem;
+    background-color: transparent;
+}
+
+.gallery {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.gallery-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-section {
+    padding: 2rem;
+    background-color: transparent;
+}
+
+.gallery-innen {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.gallery-innen-img-big {
+    width: 100%;
+    max-width: 1200px;
+    /* je nach Seitenbreite, kannst du auch 100% lassen */
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    display: block;
+    margin: 0 auto;
+}
+
+/* Technische Daten & Ausstattung */
+.specs-section,
+.equipment-section {
+    padding: 3rem 2rem;
+    max-width: 900px;
+    margin: auto;
+}
+
+.specs-section h3,
+.equipment-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #e3b505;
+    border-bottom: 2px solid #e3b505;
+    display: inline-block;
+}
+
+.spec-list,
+.equipment-list {
+    list-style: none;
+    padding-left: 0;
+    line-height: 2;
+    font-size: 1.1rem;
+}
+
+/* Call-to-Action */
+.booking-cta {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: transparent;
+    color: #fff;
+}
+
+.booking-cta .cta-text {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .detail-section {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
+
+    .detail-content h1 {
+        font-size: 2rem;
+    }
+
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.rental-select {
+    appearance: none;
+    /* entfernt Browser-Standard-Styles */
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #000000;
+    background-color: #fff;
+    color: #111;
+    font-weight: bold;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rental-select:hover,
+.rental-select:focus {
+    border-color: #111;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(53, 51, 44, 0.4);
+}
+
+.rental-datetime {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rental-datetime label {
+    font-size: 1rem;
+    color: #111;
+}
+
+.rental-date,
+.rental-time {
+    padding: 0.7rem 1rem;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    font-size: 1rem;
+    max-width: 300px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}

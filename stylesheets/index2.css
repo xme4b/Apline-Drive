@@ -1,0 +1,241 @@
+/* Grundlegende Stile */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+main,
+.cars-grid {
+    flex: 1;
+    background-color: #f9f9f9;
+}
+
+/* Header */
+
+.main-header {
+    background-color: #283d3b;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.navbar a {
+    color: #fff;
+    margin-left: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #e3b505;
+}
+
+/* Hero Section */
+.btn {
+    padding: 0.8rem 1.5rem;
+    background-color: #e3b505;
+    color: #000;
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #fff;
+}
+
+/* Hero Section mit Video */
+.hero {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 2rem;
+}
+
+/* Hintergrundvideo */
+.hero video.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* => Das ist entscheidend! */
+    object-position: center center;
+    /* zentriert den Fokus */
+    z-index: 1;
+}
+
+/* Halbtransparentes graues Overlay */
+.hero .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(64, 133, 189, 0.137);
+    /* modern grau, leicht verblasst */
+    z-index: 2;
+}
+
+/* Text auf dem Video */
+.hero-text {
+    position: relative;
+    z-index: 3;
+    padding: 2rem;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+/* Features */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 4rem 2rem;
+    background-color: #fff;
+    flex-wrap: wrap;
+}
+
+.feature {
+    max-width: 300px;
+    text-align: center;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature h2 {
+    margin-bottom: 0.5rem;
+    color: #e3b505;
+}
+
+/* Footer */
+.main-footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+.main-footer a {
+    color: #e3b505;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+
+/* Animationen */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.fade-in.delay-1 {
+    animation-delay: 0.3s;
+}
+
+.fade-in.delay-2 {
+    animation-delay: 0.6s;
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUp 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero {
+        height: 100vh;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar a {
+        margin: 0.5rem 0;
+    }
+}
