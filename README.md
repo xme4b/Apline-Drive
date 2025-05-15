@@ -7,7 +7,7 @@ Frontend:
 -  Zum Schluss die Farbdarstellung Einheitlich machen.
 
 Backend:
--  Seite in ein PHP Vormat bringen (ist ziemlich leicht, fallst dus nicht weißt einfach googeln)
+-  Seite in ein PHP Format bringen (ist ziemlich leicht, fallst dus nicht weißt einfach googeln)
 -  Scripts (verwende derzeit JS in HTML) und DB-Verbindung in einem eigenen Ordner übergeben
 -  Die DB einrichtung würd ich nicht On-Prem machen, sondern gleich dann beim Webhost (Binde hier vll nur die Buchungslogik ein, ohne Zahlung)
 -  PHPMailer hinzufügen oder gleich am Webhost schaun ob die Möglichkeit da ist für eine Bestätigungsmail 

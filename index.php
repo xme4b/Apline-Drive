@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Autovermietung - Startseite</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="cars.css">
-    <link rel="stylesheet" href="logo.css">
-    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href=".\stylesheets\index.css">
+    <link rel="stylesheet" href=".\stylesheets\cars.css">
+    <link rel="stylesheet" href=".\stylesheets\logo.css">
+    <link rel="stylesheet" href=".\stylesheets\menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -18,7 +18,7 @@
     <header class="main-header">
         <div class="header-inner">
             <div class="logo">
-                <a href="index.html"><img src="pictures/logo.jpg" alt="Alpine Drive Logo" /></a>
+                <a href="./index.html"><img src="./pictures/logo.jpg" alt="Alpine Drive Logo" /></a>
             </div>
             <div class="burger" onclick="toggleMenu()">
                 <div></div>
@@ -28,12 +28,12 @@
         </div>
 
         <nav class="navbar" id="mainNavbar">
-            <a href="index.html">Start</a>
-            <a href="autos.html">Autos</a>
-            <a href="vertrag.html">Vertrag</a>
-            <a href="kontakt.html">Kontakt</a>
-            <a href="impressum.html">Impressum</a>
-            <a href="datenschutz.html">AGB´s</a>
+            <a href="./pages/index.html">Start</a>
+            <a href="./pages/autos.html">Autos</a>
+            <a href="./pages/vertrag.html">Vertrag</a>
+            <a href="./pages/kontakt.html">Kontakt</a>
+            <a href="./pages/impressum.html">Impressum</a>
+            <a href="./pages/datenschutz.html">AGB´s</a>
         </nav>
     </header>
 
@@ -41,7 +41,7 @@
 
     <section class="hero fade-in">
         <video autoplay muted loop playsinline class="hero-video">
-            <source src="pictures/bmw.mp4" type="video/mp4">
+            <source src="./pictures/bmw.mp4" type="video/mp4">
         </video>
 
         <div class="video-overlay"></div>
@@ -49,7 +49,7 @@
         <div class="hero-text slide-up">
             <h1>Finden Sie Ihr perfektes Auto</h1>
             <p>Elegante Fahrzeuge. Faire Preise. Top-Service.</p>
-            <a href="autos.html" class="btn">Jetzt entdecken</a>
+            <a href="./pages/autos.html" class="btn">Jetzt entdecken</a>
         </div>
     </section>
 
@@ -75,20 +75,20 @@
         <div class="slider-track" id="sliderTrack">
             <div class="slide">
                 <h2>Mercedes Benz S63 AMG</h2>
-                <img src="pictures/amg.jpg" alt="Mercedes Benz S63 AMG">
+                <img src="./pictures/amg.jpg" alt="Mercedes Benz S63 AMG">
                 <a href="autos.html#amg" class="btn-to-car"
                     style="flex: initial; display: inline-block; width: auto;">Zum Fahrzeug</a>
             </div>
             <div class="slide">
                 <h2>BMW M3 Competition G80 Auto M xDrive</h2>
-                <img src="pictures/M3.jpg" alt="BMW M3">
+                <img src="./pictures/M3.jpg" alt="BMW M3">
                 <a href="autos.html#amg" class="btn-to-car"
                     style="flex: initial; display: inline-block; width: auto;">Zum Fahrzeug</a>
 
             </div>
             <div class="slide">
                 <h2>Porsche Cayenne Coupe Hybrid</h2>
-                <img src="pictures/porsche.jpg" alt="Porsche Cayenne">
+                <img src="./pictures/porsche.jpg" alt="Porsche Cayenne">
                 <a href="autos.html#amg" class="btn-to-car"
                     style="flex: initial; display: inline-block; width: auto;">Zum Fahrzeug</a>
 
@@ -99,8 +99,8 @@
     </section>
 
     <footer class="main-footer">
-        <p>&copy; Alpine Drive - Autovermietung | <a href="impressum.html">Impressum</a> | <a
-                href="AGB´s.html">Datenschutz</a></p>
+        <p>&copy; Alpine Drive - Autovermietung | <a href="./pages/impressum.html">Impressum</a> | <a
+                href="./pages/AGB´s.html">Datenschutz</a></p>
     </footer>
 
     <script>
