@@ -76,20 +76,20 @@
             <div class="slide">
                 <h2>Mercedes Benz S63 AMG</h2>
                 <img src="./pictures/amg.jpg" alt="Mercedes Benz S63 AMG">
-                <a href="autos.html#amg" class="btn-to-car"
+                <a href="./pages/autos.html" class="btn-to-car"
                     style="flex: initial; display: inline-block; width: auto;">Zum Fahrzeug</a>
             </div>
             <div class="slide">
                 <h2>BMW M3 Competition G80 Auto M xDrive</h2>
                 <img src="./pictures/M3.jpg" alt="BMW M3">
-                <a href="autos.html#amg" class="btn-to-car"
+                <a href="./pages/autos.html" class="btn-to-car"
                     style="flex: initial; display: inline-block; width: auto;">Zum Fahrzeug</a>
 
             </div>
             <div class="slide">
                 <h2>Porsche Cayenne Coupe Hybrid</h2>
                 <img src="./pictures/porsche.jpg" alt="Porsche Cayenne">
-                <a href="autos.html#amg" class="btn-to-car"
+                <a href="./pages/autos.html" class="btn-to-car"
                     style="flex: initial; display: inline-block; width: auto;">Zum Fahrzeug</a>
 
             </div>
@@ -100,7 +100,7 @@
 
     <footer class="main-footer">
         <p>&copy; Alpine Drive - Autovermietung | <a href="./pages/impressum.html">Impressum</a> | <a
-                href="./pages/AGB´s.html">Datenschutz</a></p>
+                href="./pages/AGBs.html">Datenschutz</a></p>
     </footer>
 
     <script>

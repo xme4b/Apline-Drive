@@ -62,7 +62,7 @@
             </div>
 
             <div class="detail-buttons">
-                <a href="./autos.html#m3" class="btn-details">Zurück</a>
+                <a href="./autos.html" class="btn-details">Zurück</a>
                 <a href="./vertrag.html" class="btn-to-car">Buchen</a>
             </div>
         </div>
@@ -111,7 +111,7 @@
 
     <footer class="main-footer">
         <p>&copy; Alpine Drive - Autovermietung | <a href="./impressum.html">Impressum</a> | <a
-                href="./AGB´s.html">Datenschutz</a></p>
+                href="./AGBs.html">Datenschutz</a></p>
     </footer>
 
     <script>
