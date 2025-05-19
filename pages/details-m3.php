@@ -13,25 +13,7 @@
 </head>
 
 <body>
-    <header class="main-header">
-        <div class="logo">
-            <a href="../index.php"><img src="../pictures/logo.jpg" alt="Alpine Drive Logo" /></a>
-        </div>
-        <nav class="navbar" id="mainNavbar">
-            <a href="../index.php">Start</a>
-            <a href="./autos.html">Autos</a>
-            <a href="./vertrag.html">Vertrag</a>
-            <a href="./kontakt.html">Kontakt</a>
-            <a href="./impressum.html">Impressum</a>
-            <a href="./datenschutz.html">AGB´s</a>
-        </nav>
-        <div class="burger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </header>
-
+    <?php include_once("./navbarDeatils.html"); ?>
     <section class="detail-section">
         <img src="../pictures/M3.jpg" alt="BMW M3 Competition G80 xDrive" class="detail-image" />
         <div class="detail-content">

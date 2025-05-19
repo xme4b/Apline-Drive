@@ -17,8 +17,16 @@ Im Backend kann der Auftraggeber die Daten vom Kunden ausfüllen. Dabei würde i
 * Vorname
 * Nachname
 * Geburtsdatum
+* Wohnadresse
 * Ausweisnummer
 * Führerscheinnummer
 * Ausstellungsdatum (Gültig ab)
 * Verfallsdatum (Gültig bis)
 
+Im Backend muss der Geschäftsführer die Reservierung genehmigen. Dabei kann auf einen Butto gedrückt werden und dies wird dann gebucht. Im Anschluss wird im Kalender die Daten reserviert.
+
+# Eventuelle Funktionen
+```
+isReserved()
+permitReservation()
+```
