@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <?php include_once("./navbarDeatils.html"); ?>
+    <?php include_once("./navbarDetails.html"); ?>
     <section class="detail-section">
         <img src="../pictures/M3.jpg" alt="BMW M3 Competition G80 xDrive" class="detail-image" />
         <div class="detail-content">
@@ -45,8 +45,9 @@
 
             <div class="detail-buttons">
                 <a href="./autos.html" class="btn-details">Zurück</a>
-                <a href="./vertrag.html" class="btn-to-car">Buchen</a>
+                <button href="./vertrag.html" class="btn-to-car">Buchen</button>
             </div>
+
         </div>
     </section>
 

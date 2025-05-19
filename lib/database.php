@@ -18,4 +18,14 @@ function insertCustomerData($conn , $firstname, $lastname, $birthdate, $driverLi
     $stmt->close();
 }
 
+function getLoginData($conn, $username){
+    $stmt = $conn->prepare("SELECT * FROM 'user' WHERE 'username = ?'");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+    $conn->close();
+    return $user;
+}
+
 ?>

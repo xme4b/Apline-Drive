@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <?php include_once("./navbarDeatils.html"); ?>
+    <?php include_once("./navbarDetails.html"); ?>
     <!-- Detailbereich -->
     <section class="detail-section">
         <img src="../pictures/amg.jpg" alt="Mercedes Benz S63 AMG" class="detail-image" />
