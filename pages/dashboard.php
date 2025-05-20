@@ -34,6 +34,7 @@
 
     <?php
     session_start();
+    include_once("../lib/database.php");
     if (!isset($_SESSION['active'])) {
         header("Location: login.php");
     }
@@ -132,37 +133,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Simulated database data 
-        let allData = [{
-                firstname: "John",
-                lastname: "Doe",
-                licensePlate: "ABC123",
-                date: "2023-03-01"
-            },
-            {
-                firstname: "Jane",
-                lastname: "Smith",
-                licensePlate: "DEF456",
-                date: "2023-03-05"
-            },
-            {
-                firstname: "Bob",
-                lastname: "Johnson",
-                licensePlate: "GHI789",
-                date: "2023-03-10"
-            },
-            {
-                firstname: "Alice",
-                lastname: "Williams",
-                licensePlate: "JKL012",
-                date: "2023-03-15"
-            },
-            {
-                firstname: "Alice",
-                lastname: "Williams",
-                licensePlate: "JKL012",
-                date: "2023-03-15"
-            },
-        ];
+        let allData = [<?php echo json_encode(getAllCustomerReservation($conn)) ?>];
 
         // Function to filter table data by date range
         function filterByDate() {
@@ -190,7 +161,7 @@
                     <td>${row.firstname}</td>
                     <td>${row.lastname}</td>
                     <td>${row.licensePlate}</td>
-                    <td>${row.date}</td>
+                    <td>${row.beginDate} - ${row.endDate}</td>
                 </tr>
             `;
             });
@@ -206,7 +177,7 @@
                     <td>${row.firstname}</td>
                     <td>${row.lastname}</td>
                     <td>${row.licensePlate}</td>
-                    <td>${row.date}</td>
+                    <td>${row.beginDate} - ${row.endDate}</td>
                 </tr>
             `;
             });

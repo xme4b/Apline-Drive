@@ -27,4 +27,13 @@ function getLoginData($conn, $username){
     $conn->close();
     return $user;
 }
+
+function getAllCustomerReservation($conn){
+    $stmt = $conn->prepare("SELECT * FROM customer INNER JOIN reservationcar ON customer.id = reservationcar.ReservationCar_CustomerID");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $data = $result->fetch_assoc();
+    $conn->close();
+    return $data;
+}
 ?>

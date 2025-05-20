@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 20. Mai 2025 um 18:11
+-- Erstellungszeit: 20. Mai 2025 um 18:56
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -51,7 +51,8 @@ CREATE TABLE `reservationcar` (
   `endDate` datetime NOT NULL,
   `dateNow` datetime NOT NULL,
   `ReservationCar_CustomerID` int(11) NOT NULL,
-  `reservationIsConfirmed` tinyint(1) NOT NULL
+  `reservationIsConfirmed` tinyint(1) NOT NULL,
+  `licensePlate` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
 -- --------------------------------------------------------
