@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <?php include_once("./navbarDeatils.html"); ?>
+    <?php include_once("./navbarDetails.html"); ?>
     <!-- Detailbereich -->
     <section class="detail-section">
         <img src="../pictures/porsche.jpg" alt="Porsche Cayenne Coupe Hybrid" class="detail-image" />

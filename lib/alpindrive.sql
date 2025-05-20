@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 19. Mai 2025 um 17:29
+-- Erstellungszeit: 20. Mai 2025 um 11:42
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -67,6 +67,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
 --
+-- Daten für Tabelle `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`) VALUES
+(1, 'mehmet', '9c31b954e3cd523c1707a5ee9242cd483a4be5eb00e25fca2d');
+
+--
 -- Indizes der exportierten Tabellen
 --
 
@@ -84,6 +91,12 @@ ALTER TABLE `reservationcar`
   ADD KEY `reservationCar_CustomerID` (`ReservationCar_CustomerID`);
 
 --
+-- Indizes für die Tabelle `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT für exportierte Tabellen
 --
 
@@ -98,6 +111,12 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `reservationcar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints der exportierten Tabellen
