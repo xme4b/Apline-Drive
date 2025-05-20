@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 20. Mai 2025 um 11:42
+-- Erstellungszeit: 20. Mai 2025 um 18:11
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -63,7 +63,7 @@ CREATE TABLE `reservationcar` (
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, 'mehmet', '9c31b954e3cd523c1707a5ee9242cd483a4be5eb00e25fca2d');
+(1, 'mehmet', '9c31b954e3cd523c1707a5ee9242cd483a4be5eb00e25fca2d2f292c5591e331');
 
 --
 -- Indizes der exportierten Tabellen
