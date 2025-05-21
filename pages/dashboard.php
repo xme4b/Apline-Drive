@@ -43,48 +43,16 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">Vehicle Dashboard</a>
+            <a class="navbar-brand" href="./dashboard.php">Vehicle Dashboard</a>
         </div>
     </nav>
 
-    <!-- Sidebar -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebarMenuLabel">Navigation</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
-            </ul>
-        </div>
-    </div>
 
     <!-- Main Content -->
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h5>Vehicle Entries</h5>
-                        <div class="row mt-2">
-                            <div class="col-md-4">
-                                <input type="date" id="fromDate" class="form-control" placeholder="From Date">
-                            </div>
-                            <div class="col-md-4">
-                                <input type="date" id="toDate" class="form-control" placeholder="To Date">
-                            </div>
-                            <div class="col-md-4">
-                                <button class="btn btn-primary" onclick="filterByDate()">Filter</button>
-                            </div>
-                        </div>
-                    </div>
                     <div class="card-body table-responsive">
                         <table id="vehicleTable" class="table table-striped">
                             <thead>
@@ -96,32 +64,34 @@
                                 </tr>
                             </thead>
                             <tbody id="tableBody">
-                                <!-- Simulated Database Data -->
-                                <tr>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>ABC123</td>
-                                    <td>2023-03-01</td>
-                                </tr>
-                                <tr>
-                                    <td>Jane</td>
-                                    <td>Smith</td>
-                                    <td>DEF456</td>
-                                    <td>2023-03-05</td>
-                                </tr>
-                                <tr>
-                                    <td>Bob</td>
-                                    <td>Johnson</td>
-                                    <td>GHI789</td>
-                                    <td>2023-03-10</td>
-                                </tr>
-                                <tr>
-                                    <td>Alice</td>
-                                    <td>Williams</td>
-                                    <td>JKL012</td>
-                                    <td>2023-03-15</td>
-                                </tr>
-                                <!-- End Simulated Data -->
+                                <form action="./dashboard.php" method="post">
+                                    <?php                                    
+                                    $confimredID = isset($_POST['confirmedID']) ? $_POST['confirmedID'] : "";
+                                    
+                                    // check if the contet is empty
+                                    if(!empty($confimredID)){
+                                        updateConfirmation($conn, $confimredID);
+                                    }
+                                    
+                                    $dataset = getAllCustomerReservation($conn);
+
+                                    // output for the table content
+                                    for ($i = 0; $i < count($dataset); $i++) {
+                                        $begindate = new DateTime($dataset[$i]['beginDate']);
+                                        $enddate = new DateTime($dataset[$i]['endDate']);
+
+                                        echo "
+                                            <tr>
+                                            <td>" . $dataset[$i]['firstname'] . "</td>
+                                            <td>" . $dataset[$i]['lastname'] . "</td>
+                                            <td>" . $dataset[$i]['licensePlate'] . "</td>
+                                            <td>" . $begindate->format("(d.m.Y) H:i") . " - " . $enddate->format("(d.m.Y) H:i") . "</td>
+                                            <td><button name='confirmedID' value='" . $dataset[$i]['id'] . "'type='submit' class='btn btn-success'>Bestätige</button></td>
+                                            <tr>
+                                        ";
+                                    }
+                                    ?>
+                                </form>
                             </tbody>
                         </table>
                     </div>
@@ -131,9 +101,9 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
+    <!-- <script>
         // Simulated database data 
-        let allData = [<?php echo json_encode(getAllCustomerReservation($conn)) ?>];
+        let allData = [<?php // echo json_encode(getAllCustomerReservation($conn)) ?>];
 
         // Function to filter table data by date range
         function filterByDate() {
@@ -146,12 +116,6 @@
                 alert('Please select both From and To dates.');
                 return;
             }
-
-            // Filter data based on selected date range
-            const filteredData = allData.filter(row => {
-                const rowDate = new Date(row.date);
-                return rowDate >= new Date(fromDate) && rowDate <= new Date(toDate);
-            });
 
             // Update table with filtered data
             let html = '';
@@ -172,18 +136,29 @@
         document.addEventListener('DOMContentLoaded', function() {
             let html = '';
             allData.forEach(row => {
+                const formatter = new Intl.DateTimeFormat('de-DE', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false, 
+                    timeZone: 'Europe/Berlin'
+                });
+
                 html += `
                 <tr>
                     <td>${row.firstname}</td>
                     <td>${row.lastname}</td>
                     <td>${row.licensePlate}</td>
-                    <td>${row.beginDate} - ${row.endDate}</td>
+                    <td>${formatter.format(new Date(row.beginDate))} - ${formatter.format(new Date(row.endDate))}</td>
+                    <td><button name="confirmed" value="1" type="button" class="btn btn-success">Bestätige</button></td>
                 </tr>
             `;
             });
             document.getElementById('tableBody').innerHTML = html;
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

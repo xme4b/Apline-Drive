@@ -28,12 +28,18 @@ function getLoginData($conn, $username){
     return $user;
 }
 
+function updateConfirmation($conn, $id){
+    $stmt = $conn->prepare("UPDATE reservationcar SET reservationIsConfirmed = 1 WHERE reservationcar.id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
 function getAllCustomerReservation($conn){
-    $stmt = $conn->prepare("SELECT * FROM customer INNER JOIN reservationcar ON customer.id = reservationcar.ReservationCar_CustomerID");
+    $stmt = $conn->prepare("SELECT * FROM customer INNER JOIN reservationcar ON customer.id = reservationcar.ReservationCar_CustomerID WHERE reservationcar.reservationIsConfirmed = 0");
     $stmt->execute();
     $result = $stmt->get_result();
-    $data = $result->fetch_assoc();
-    $conn->close();
+    $data = $result->fetch_all(MYSQLI_ASSOC);
     return $data;
 }
 ?>
+
