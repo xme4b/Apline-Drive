@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 20. Mai 2025 um 18:56
+-- Erstellungszeit: 22. Mai 2025 um 14:10
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -36,7 +36,9 @@ CREATE TABLE `customer` (
   `birthday` date NOT NULL,
   `driverLicenseNumber` varchar(50) NOT NULL,
   `exhibitionDate` date NOT NULL,
-  `expirationDate` date NOT NULL
+  `expirationDate` date NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phonenumber` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
 -- --------------------------------------------------------
