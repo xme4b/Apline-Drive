@@ -89,15 +89,29 @@
     $licensePlate = isset($_POST['carType']) ? $_POST['carType'] : "";
     $beginDate = isset($_POST['beginDate']) ? $_POST['beginDate'] : "";
     $endDate = isset($_POST['endDate']) ? $_POST['endDate'] : "";
+
+    $reservationArr = getAllReservationCarDates($conn);
+    $datesFromTo = "";
+    $dateFrom = "";
+    $dateTo = "";
+
+    $format = 'Y-m-d H:i:s';
+
+
+    for ($i = 0; $i < count($reservationArr); $i++) {
+        $dateFrom = DateTime::createFromFormat($format, $reservationArr[$i]['beginDate'])->format('d.m.Y H:i');
+        $dateTo = DateTime::createFromFormat($format, $reservationArr[$i]['endDate'])->format('d.m.Y H:i');
+        $datesFromTo = $datesFromTo . "{from: " . $dateFrom . ", to: " . $dateTo . "},";
+    }
     ?>
     <div class="reservation-container">
         <?php
-        
+
         if (isset($_POST['submit'])) {
             echo insertReservation($conn, $firstname, $lastname, $email, $phonenumber, $beginDate, $endDate, $licensePlate);
         }
         ?>
-        <h2>ALPINDRIVE Reservierung</h2>
+        <h2>ALPINDRIVE RESERVIERUNG</h2>
         <form action="./kalender.php" method="post">
             <div class="form-group">
                 <label for="name">Vorname:</label>
@@ -140,14 +154,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        <?php
-            
-        ?>
 
-
-        const blockDates = "23.05.2025";
-
-        var stringling =  '{from: 23.05.2025,to: 30.05.2025}';
+        const blockDates = "<?php echo $datesFromTo;?>";
 
         document.addEventListener('DOMContentLoaded', function() {
             flatpickr("#pickupDate", {

@@ -73,7 +73,7 @@ function getAllReservationCarByDates($conn, $beginDate, $endDate){
 }
 
 function getAllReservationCarDates($conn){
-    $stmt = $conn->prepare("SELECT * FROM reservationcar");
+    $stmt = $conn->prepare("SELECT * FROM reservationcar WHERE reservationIsConfirmed = 0");
     $stmt->execute();
     $result = $stmt->get_result();
     $data = $result->fetch_all(MYSQLI_ASSOC);
