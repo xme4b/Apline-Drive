@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Reservation</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -79,57 +80,86 @@
 </head>
 
 <body>
+    <?php
+    include_once("../lib/database.php");
+    $firstname = isset($_POST['firstname']) ? $_POST['firstname'] : "";
+    $lastname = isset($_POST['lastname']) ? $_POST['lastname'] : "";
+    $email = isset($_POST['email']) ? $_POST['email'] : "";
+    $phonenumber = isset($_POST['phonenumber']) ? $_POST['phonenumber'] : "";
+    $licensePlate = isset($_POST['carType']) ? $_POST['carType'] : "";
+    $beginDate = isset($_POST['beginDate']) ? $_POST['beginDate'] : "";
+    $endDate = isset($_POST['endDate']) ? $_POST['endDate'] : "";
+    ?>
     <div class="reservation-container">
-        <h2>Car Reservation</h2>
-        <form id="reservationForm">
+        <?php
+        
+        if (isset($_POST['submit'])) {
+            insertReservation($conn, $firstname, $lastname, $email, $phonenumber, $beginDate, $endDate, $licensePlate);
+            echo "<div class='alert alert-success' role='alert'>
+                        Reservierung erfolgreich!
+                    </div>";
+        }
+        ?>
+        <h2>ALPINDRIVE Reservierung</h2>
+        <form action="./kalender.php" method="post">
             <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required>
+                <label for="name">Vorname:</label>
+                <input name="firstname" type="text" id="firstname" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Nachname:</label>
+                <input name="lastname" type="text" id="lastname" required>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" required>
+                <input name="email" type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phonenumber">Telefonnumer:</label>
+                <input name="phonenumber" type="text" id="phonenumber" required>
             </div>
             <div class="form-group">
                 <label for="carType">Car Type:</label>
-                <select id="carType" required>
+                <select name="carType" id="carType" required>
                     <option value="">Select</option>
-                    <option value="Sedan">Sedan</option>
-                    <option value="SUV">SUV</option>
-                    <option value="Truck">Truck</option>
+                    <option value="ZE-G80">M3 G80</option>
+                    <option value="ZE-SKLASSE">S-Klasse</option>
+                    <option value="ZE-CAYENE">Cayene</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="pickupDate">Pickup Date/Time:</label>
-                <input type="text" id="pickupDate" required>
+                <input name="beginDate" type="text" id="pickupDate" required>
             </div>
             <div class="form-group">
                 <label for="returnDate">Return Date/Time:</label>
-                <input type="text" id="returnDate" required>
+                <input name="endDate" type="text" id="returnDate" required>
             </div>
-            <button type="submit">Make Reservation</button>
+            <button name="submit" type="submit">Make Reservation</button>
         </form>
-        <div id="reservationSummary" style="display:none;">
-            <h3>Reservation Summary</h3>
-            <p id="summaryName"></p>
-            <p id="summaryEmail"></p>
-            <p id="summaryCarType"></p>
-            <p id="summaryPickup"></p>
-            <p id="summaryReturn"></p>
-        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         const blockDates = "23.05.2025";
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize flatpickr for date/time pickers with disabled weekdays
             flatpickr("#pickupDate", {
                 dateFormat: "d.m.Y H:i",
                 minDate: new Date(),
                 enableTime: true,
                 time_24hr: true,
+                disable: [
+                    function(date) {
+                        return (date.getDay() === 1 || date.getDay() === 2);
+                    },
+                    blockDates
+                ],
+                locale: {
+                    firstDayOfWeek: 1
+                }
             });
             flatpickr("#returnDate", {
                 dateFormat: "d.m.Y H:i",

@@ -11,9 +11,9 @@ if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
 }
 
-function insertCustomerData($conn , $firstname, $lastname, $birthdate, $driverLicenseNumber, $exhibitionDate, $expirationDate) {	
-    $stmt = $conn->prepare("INSERT INTO `customer` (`id`, `firstname`, `lastname`, `birthday`, `driverLicenseNumber`, `exhibitionDate`, `expirationDate`) VALUES (NULL, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $firstname, $lastname, $birthdate, $driverLicenseNumber, $exhibitionDate, $expirationDate);
+function insertCustomerData($conn , $firstname, $lastname, $birthdate, $driverLicenseNumber, $exhibitionDate, $expirationDate, $email, $phonenumber) {	
+    $stmt = $conn->prepare("INSERT INTO `customer` (`id`, `firstname`, `lastname`, `birthday`, `driverLicenseNumber`, `exhibitionDate`, `expirationDate` , email, phonenumber) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssss", $firstname, $lastname, $birthdate, $driverLicenseNumber, $exhibitionDate, $expirationDate, $email, $phonenumber);
     $stmt->execute();
     $stmt->close();
 }
@@ -40,6 +40,30 @@ function getAllCustomerReservation($conn){
     $result = $stmt->get_result();
     $data = $result->fetch_all(MYSQLI_ASSOC);
     return $data;
+}
+
+function getCustomerByEmail($conn, $email){
+    $stmt = $conn->prepare("SELECT * FROM customer WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+    return $data;
+}
+
+function insertReservation($conn, $firstname, $lastname, $email, $phonenumber, $beginDate, $endDate, $licensePlate){
+    insertCustomerData($conn, $firstname, $lastname, "", "", "", "", $email, $phonenumber);
+    $customer = getCustomerByEmail($conn, $email);
+    $cusotmerID = $customer[0]['id'];
+
+    $format = 'd.m.Y H:i';
+    $beginDate = DateTime::createFromFormat($format, $beginDate)->format('Y-m-d H:i:s');
+    $endDate = DateTime::createFromFormat($format, $endDate)->format('Y-m-d H:i:s');
+
+    $stmt = $conn->prepare("INSERT INTO reservationcar (id, beginDate, endDate, dateNow, ReservationCar_CustomerID, reservationIsConfirmed, licensePlate) VALUES (NULL, ?, ?, current_timestamp(), ?, 0, ?)");
+    $stmt->bind_param("ssis", $beginDate, $endDate, $cusotmerID, $licensePlate);
+    $stmt->execute();
+
 }
 ?>
 
