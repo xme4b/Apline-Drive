@@ -94,10 +94,7 @@
         <?php
         
         if (isset($_POST['submit'])) {
-            insertReservation($conn, $firstname, $lastname, $email, $phonenumber, $beginDate, $endDate, $licensePlate);
-            echo "<div class='alert alert-success' role='alert'>
-                        Reservierung erfolgreich!
-                    </div>";
+            echo insertReservation($conn, $firstname, $lastname, $email, $phonenumber, $beginDate, $endDate, $licensePlate);
         }
         ?>
         <h2>ALPINDRIVE Reservierung</h2>
@@ -143,7 +140,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
+        <?php
+            
+        ?>
+
+
         const blockDates = "23.05.2025";
+
+        var stringling =  '{from: 23.05.2025,to: 30.05.2025}';
 
         document.addEventListener('DOMContentLoaded', function() {
             flatpickr("#pickupDate", {
@@ -170,7 +174,6 @@
                     function(date) {
                         return (date.getDay() === 1 || date.getDay() === 2);
                     },
-                    blockDates
                 ],
                 locale: {
                     firstDayOfWeek: 1
